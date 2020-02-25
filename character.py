@@ -17,7 +17,7 @@ class Character():                                      #Defines the Character C
 
     def talk(self):                                     #Defines how the user will interact with the Character
         if self.conversation is not None:
-            print("" + self.name + " says: " + self.conversation)
+            print(self.name + " says: " + self.conversation)
         else:
             print(self.name + " doesn't want to talk to you")
 
@@ -29,7 +29,7 @@ class Enemy(Character):                                 #Defines the Enemy Class
 
   enemies_defeated = 0                                  #Sets Variable as 0
 
-  def __init__(self, char_name, char_description):      #Initializes the Class with varibales, names and descriptions
+  def __init__(self, char_name, char_description):      #Initializes the Class with variables, names and descriptions
 
     super().__init__(char_name, char_description)       #Initializes the Class with the Super Element
     self.weakness = None                                #Sets the weakness of all characters to be nothing
@@ -59,5 +59,5 @@ class Friend(Character):                                #Defines the Friend Clas
 
   def __init__(self, char_name, char_description):      #Initializes the Class with variables, names and descriptions
 
-    super().__init__(char_name, char_description)       #Initializesthe Class with the Super Element
+    super().__init__(char_name, char_description)       #Initializes the Class with the Super Element
     self.feeling = None
