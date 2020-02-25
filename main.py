@@ -16,9 +16,9 @@ def type(string):
     sys.stdout.flush()
     time.sleep(0.02)
 
-mixer.init()
-mixer.music.load("Duel of the Fates.mp3")     #Music Player
-mixer.music.play(5)
+mixer.init()                                    #Initializes Music Player
+mixer.music.load("Duel of the Fates.mp3")       #Loads the Music
+mixer.music.play(5)                             #Plays Music 5 times
 
 lift = Room("Lift")
 lift.set_description("You can go up or down!")      #Sets name and description for Lift
@@ -73,12 +73,12 @@ communications_center.set_character(swordsman)
 
 cruiser = Enemy("FF Cruiser", "A Formula Front Cruiser that has its guns blazing\n")
 cruiser.set_weakness("Infinity's Guns")                   #Sets name, weakness and place for FF Cruiser
-command_center.set_character(cruiser)
+command_center.set_character(cruiser)                     #Enemy is in multiple rooms
 hangar.set_character(cruiser)
 
 fighters = Enemy("FF Fighters", "A Formula Front Fighter Squadron zooming towards you\n")
 fighters.set_weakness("WSC Fighters")                   #Sets name, weakness and place for FF Fighters
-command_center.set_character(fighters)
+command_center.set_character(fighters)                  #Enemy is in multiple rooms
 hangar.set_character(fighters)
 
 battleship = Enemy("FF Battleship", "A Formula Front Battleship. Heavy armour. Heavy firepower. Treat with care\n")
@@ -87,7 +87,7 @@ command_center.set_character(battleship)
 
 destroyer = Enemy("FF Destroyer", "A Formula Front Destroyer. Fast... but not fast enough\n")
 destroyer.set_weakness("Infinity's Guns")                   #Sets name, weakness and place for FF Destroyer
-engine_room.set_character(destroyer)
+engine_room.set_character(destroyer)                        #Enemy is in multiple rooms
 communications_center.set_character(destroyer)
 
 gun = Item("Pistol")
@@ -171,7 +171,7 @@ type("Let us go forth and defend Geneva!\n")
 print(" ")
 time.sleep(2)
 
-while dead == False:                                #While loop to run the main game
+while dead == False:                                #While loop to run the main game until the user is dead - Which happens if they win or lose...
 
     current_room.get_details()                      #Gets the details of the current room the user is up to
 
