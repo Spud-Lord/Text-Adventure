@@ -242,6 +242,7 @@ while dead == False:                                #While loop to run the main 
 
                     else:
                         mixer.music.fadeout(3000)
+                        time.sleep(3)
                         dead = True                       #If the user loses the fight, the dead Boolean is made True
 
                 else:
