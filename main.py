@@ -8,7 +8,7 @@ import typing
 import os
 import sys
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide"       #Hides the "Welcome to Pygame" Message
-from pygame import mixer
+import pygame
 
 def type(string):
   for char in string:
@@ -22,9 +22,27 @@ def type2(string):
     sys.stdout.flush()
     time.sleep(0.75)
 
-mixer.init()                                    #Initializes Music Player
-mixer.music.load("Duel of the Fates.mp3")       #Loads the Music
-mixer.music.play(5)                             #Plays Music 5 times
+pygame.mixer.init()
+
+def resource_path(relative):
+    if hasattr(sys, "_MEIPASS"):
+        return os.path.join(sys._MEIPASS, relative)
+    return os.path.join(relative)
+
+fileDir = os.path.dirname(os.path.realpath('__file__'))
+
+
+imperial_alert = resource_path("imperial_alert.wav")
+duelofthefates = resource_path("Duel of the Fates.wav")
+explosionfixed2 = resource_path("Explosion-Fixed2.wav")
+
+imperial_alertSound=pygame.mixer.Sound("imperial_alert.wav")
+duelofthefatesSound=pygame.mixer.Sound("Duel of the Fates.wav")
+explosionfixed2Sound=pygame.mixer.Sound("Explosion-Fixed2.wav")
+
+                                    #Initializes Music Player
+pygame.mixer.music.load("Duel of the Fates.mp3")       #Loads the Music
+pygame.mixer.music.play(5)                             #Plays Music 5 times
 
 lift = Room("Lift")
 lift.set_description("You can go up or down!")      #Sets name and description for Lift
@@ -55,8 +73,8 @@ tom = Character("Tom", "Your micromanager. He will keep watch on your minions\n"
 tom.set_conversation("Hello There Sir! All systems functioning normally!\n")      #Sets name, conversation and place for Bob
 command_center.set_character(tom)
 
-jerry = Character("Jerry", "Radar Manager. He watches the radar and will update you with any updates")
-jerry.set_conversation("Hello There Sir! FF Warships are flanking us! Fighters incoming! We need you to command the Infinity to push the enemy back!")
+jerry = Character("Jerry", "Radar Manager. He watches the radar and will update you with any updates\n")
+jerry.set_conversation("Hello There Sir! FF Warships are flanking us! Fighters incoming! We need you to command the Infinity to push the enemy back!\n")
 command_center.set_character(jerry)
 
 penny = Character("Penny", "Your Hangar Commander. She gives the orders around here\n")
@@ -109,7 +127,7 @@ sword.set_description("It may not be a lightsaber, but it will slice you clean i
 lift.set_item(sword)
 
 infinity = Item("Infinity's Guns")
-infinity.set_description("The contorls for the guns of the most powerful warship ever created. Use these to destroy any ship attempting to bring you down\n")     #Sets name, description and location for Infinity's Guns
+infinity.set_description("The controls for the guns of the most powerful warship ever created. Use these to destroy any ship attempting to bring you down\n")     #Sets name, description and location for Infinity's Guns
 command_center.set_item(infinity)
 
 fighters = Item("WSC Fighters")
@@ -183,7 +201,11 @@ time.sleep(2)
 
 while dead == False:                                #While loop to run the main game until the user is dead - Which happens if they win or lose...
 
+    print("")
+
     current_room.get_details()                      #Gets the details of the current room the user is up to
+
+    print("")
 
     inhabitant = current_room.get_character()       #Gets the characters in the current room the user is in and assigns it to a variable for easy working
     if inhabitant is not None:                      #If there is an inhabitant, the indented code will run
@@ -202,33 +224,35 @@ while dead == False:                                #While loop to run the main 
 
     elif command == "Talk":                                 #If the user wants to talk, the indented code will run
         print("Who do you want to talk with? ")
-        talker = input()
+        talker = input("> ")
         found = False                                       #True or False Boolean deciding if there is a person there
         for person in inhabitant:                           #If there is an inhabitant, the following code will run
             if person.get_name() == talker:                 #Gets the name of the Person if they are registered as a talker
                 found = True                                #Changes Boolean to True
                 person.talk()                               #Makes the person talk
+                time.sleep(4)
         if not found:                                       #If the person is not there the indented code runs
             print("That person is not here!")
 
     elif command == "Fight":                                #If the user wants to fight, the indented code will run
         print("Who do you want to fight?")
-        fighter = input()                                   #Allows user to input who they want to fight
+        fighter = input("> ")                                   #Allows user to input who they want to fight
         there = False                                       #True or False Boolean deciding if there is a fighter there or not
         for person in inhabitant:                           #If there is a person who fights then the following code will run
             if person.get_name() == fighter:
                 print("What will you fight with?")
-                fight_with = input()                        #Fight with variable allowing user to input what they want to fight with
+                fight_with = input("> ")                        #Fight with variable allowing user to input what they want to fight with
 
                 if fight_with in on_hand:                   #If what the user wants to fight with is on hand (as determined by list), the indented code will run
 
                     if person.fight(fight_with) == True:    #If the weapon is the enemies weakness
                         print("You destroy your enemy...\n")
+                        time.sleep(3)
                         current_room.get_character().remove(person)   #Removes the person if they are defeated
                         if person.get_defeated() == 9:      #When all the enemies are defeated, the indented code will run
-                            mixer.music.stop()
-                            mixer.music.load("imperial_alert.mp3")
-                            mixer.music.play()
+                            pygame.mixer.music.stop()
+                            pygame.mixer.music.load("imperial_alert.wav")
+                            pygame.mixer.music.play()
                             print("INCOMING!\n")
                             time.sleep(2)
                             type("The Infinity has taken critical damage!\n")
@@ -238,11 +262,11 @@ while dead == False:                                #While loop to run the main 
                             print("")
                             time.sleep(2)
                             type("BRACE FOR IMPACT!\n")
+                            time.sleep(3)
                             print("")
                             mixer.music.stop()
-                            mixer.music.load("Explosion-Fixed2.mp3")
+                            mixer.music.load("Explosion-Fixed2.wav")
                             mixer.music.play()
-                            time.sleep(3)
                             type("The Infinity crash landed in Lake Geneva... killing all on board...\n")
                             print("")
                             time.sleep(3)
@@ -253,11 +277,10 @@ while dead == False:                                #While loop to run the main 
                             print("")
                             time.sleep(1)
                             type("Coming 2020...")
-                            mixer.music.fadeout(3000)      #Any playing music is faded away for 3 seconds
                             dead = True                    #dead Boolean made True
 
                     else:
-                        mixer.music.fadeout(3000)
+                        pygame.mixer.music.fadeout(3000)
                         time.sleep(3)
                         dead = True                       #If the user loses the fight, the dead Boolean is made True
 
