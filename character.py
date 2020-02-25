@@ -54,10 +54,3 @@ class Enemy(Character):                                 #Defines the Enemy Class
 
   def set_defeated(self, number_defeated):              #Defines how the program will set the Enemy state to be defeated
     Enemy.enemies_defeated = number_defeated
-
-class Friend(Character):                                #Defines the Friend Class as a derivitive of the Character Class to be called and used in the main program
-
-  def __init__(self, char_name, char_description):      #Initializes the Class with variables, names and descriptions
-
-    super().__init__(char_name, char_description)       #Initializes the Class with the Super Element
-    self.feeling = None
