@@ -52,11 +52,11 @@ engine_room.link_room(lift, "Back")
 communications_center.link_room(lift, "Back")
 
 tom = Character("Tom", "Your micromanager. He will keep watch on your minions\n")
-tom.set_conversation("Hello There Sir! All systems functioning normally!\n")      #Sets name, conversation and place for Bob
+tom.set_conversation("Hello There Sir! All systems functioning normally!\n")      #Sets name, conversation and place for Tom
 command_center.set_character(tom)
 
 jerry = Character("Jerry", "Radar Manager. He watches the radar and will update you with any updates\n")
-jerry.set_conversation("Hello There Sir! FF Warships are flanking us! Fighters incoming! We need you to command the Infinity to push the enemy back!\n")
+jerry.set_conversation("Hello There Sir! FF Warships are flanking us! Fighters incoming! We need you to command the Infinity to push the enemy back!\n")      #Sets name, conversation and place for Jerry
 command_center.set_character(jerry)
 
 penny = Character("Penny", "Your Hangar Commander. She gives the orders around here\n")
