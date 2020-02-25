@@ -8,7 +8,7 @@ import typing
 import os
 import sys
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide"       #Hides the "Welcome to Pygame" Message
-import pygame
+from pygame import mixer
 
 def type(string):
   for char in string:
@@ -22,27 +22,9 @@ def type2(string):
     sys.stdout.flush()
     time.sleep(0.75)
 
-pygame.mixer.init()
-
-def resource_path(relative):
-    if hasattr(sys, "_MEIPASS"):
-        return os.path.join(sys._MEIPASS, relative)
-    return os.path.join(relative)
-
-fileDir = os.path.dirname(os.path.realpath('__file__'))
-
-
-imperial_alert = resource_path("imperial_alert.wav")
-duelofthefates = resource_path("Duel of the Fates.wav")
-explosionfixed2 = resource_path("Explosion-Fixed2.wav")
-
-imperial_alertSound=pygame.mixer.Sound("imperial_alert.wav")
-duelofthefatesSound=pygame.mixer.Sound("Duel of the Fates.wav")
-explosionfixed2Sound=pygame.mixer.Sound("Explosion-Fixed2.wav")
-
-                                    #Initializes Music Player
-pygame.mixer.music.load("Duel of the Fates.mp3")       #Loads the Music
-pygame.mixer.music.play(5)                             #Plays Music 5 times
+mixer.init()                                    #Initializes Music Player
+mixer.music.load("Duel of the Fates.mp3")       #Loads the Music
+mixer.music.play(5)                             #Plays Music 5 times
 
 lift = Room("Lift")
 lift.set_description("You can go up or down!")      #Sets name and description for Lift
@@ -250,9 +232,9 @@ while dead == False:                                #While loop to run the main 
                         time.sleep(3)
                         current_room.get_character().remove(person)   #Removes the person if they are defeated
                         if person.get_defeated() == 9:      #When all the enemies are defeated, the indented code will run
-                            pygame.mixer.music.stop()
-                            pygame.mixer.music.load("imperial_alert.wav")
-                            pygame.mixer.music.play()
+                            mixer.music.stop()
+                            mixer.music.load("imperial_alert.mp3")
+                            mixer.music.play()
                             print("INCOMING!\n")
                             time.sleep(2)
                             type("The Infinity has taken critical damage!\n")
@@ -265,7 +247,7 @@ while dead == False:                                #While loop to run the main 
                             time.sleep(3)
                             print("")
                             mixer.music.stop()
-                            mixer.music.load("Explosion-Fixed2.wav")
+                            mixer.music.load("Explosion-Fixed2.mp3")
                             mixer.music.play()
                             type("The Infinity crash landed in Lake Geneva... killing all on board...\n")
                             print("")
@@ -280,7 +262,7 @@ while dead == False:                                #While loop to run the main 
                             dead = True                    #dead Boolean made True
 
                     else:
-                        pygame.mixer.music.fadeout(3000)
+                        mixer.music.fadeout(3000)
                         time.sleep(3)
                         dead = True                       #If the user loses the fight, the dead Boolean is made True
 
