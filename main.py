@@ -16,6 +16,12 @@ def type(string):
     sys.stdout.flush()
     time.sleep(0.02)
 
+def type2(string):
+  for char in string:
+    sys.stdout.write(char)          #Defines what "type2" command does
+    sys.stdout.flush()
+    time.sleep(0.75)
+
 mixer.init()                                    #Initializes Music Player
 mixer.music.load("Duel of the Fates.mp3")       #Loads the Music
 mixer.music.play(5)                             #Plays Music 5 times
@@ -71,7 +77,7 @@ swordsman.set_conversation("Face me and prepare to feel the pain of head landing
 swordsman.set_weakness("Sword")
 communications_center.set_character(swordsman)
 
-cruiser = Enemy("FF Cruiser", "A Formula Front Cruiser that has its guns blazing\n")
+cruiser = Enemy("FF Cruiser", "A Formula Front Cruiser quickly approaching with its guns blazing\n")
 cruiser.set_weakness("Infinity's Guns")                   #Sets name, weakness and place for FF Cruiser
 command_center.set_character(cruiser)                     #Enemy is in multiple rooms
 hangar.set_character(cruiser)
@@ -216,6 +222,9 @@ while dead == False:                                #While loop to run the main 
                         print("You destroy your enemy...\n")
                         current_room.get_character().remove(person)   #Removes the person if they are defeated
                         if person.get_defeated() == 9:      #When all the enemies are defeated, the indented code will run
+                            mixer.music.stop()
+                            mixer.music.load("imperial_alert.mp3")
+                            mixer.music.play()
                             print("INCOMING!\n")
                             time.sleep(2)
                             type("The Infinity has taken critical damage!\n")
@@ -227,13 +236,16 @@ while dead == False:                                #While loop to run the main 
                             type("BRACE FOR IMPACT!\n")
                             print("")
                             time.sleep(3)
+                            mixer.music.stop()
+                            mixer.music.load("Explosion-Fixed.mp3")
+                            mixer.music.play(5)
                             type("The Infinity crash landed in Lake Geneva... killing all on board...\n")
                             print("")
                             time.sleep(3)
                             type("War has begun...\n")
                             print("")
                             time.sleep(3)
-                            type("Prepare...\n")
+                            type2("Prepare...\n")
                             print("")
                             time.sleep(1)
                             type("Coming 2020...")
