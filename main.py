@@ -51,9 +51,13 @@ hangar.link_room(lift, "Back")                            #Links the Lift to all
 engine_room.link_room(lift, "Back")
 communications_center.link_room(lift, "Back")
 
-bob = Character("Bob", "Your micromanager. He will keep watch on your minions\n")
-bob.set_conversation("Hello There Sir! All systems functioning normally!\n")      #Sets name, conversation and place for Bob
-command_center.set_character(bob)
+tom = Character("Tom", "Your micromanager. He will keep watch on your minions\n")
+tom.set_conversation("Hello There Sir! All systems functioning normally!\n")      #Sets name, conversation and place for Bob
+command_center.set_character(tom)
+
+jerry = Character("Jerry", "Radar Manager. He watches the radar and will update you with any updates")
+jerry.set_conversation("Hello There Sir! FF Warships are flanking us! Fighters incoming! We need you to command the Infinity to push the enemy back!")
+command_center.set_character(jerry)
 
 penny = Character("Penny", "Your Hangar Commander. She gives the orders around here\n")
 penny.set_conversation("Hello There Sir! Let me know if you want to deploy fighters!\n")      #Sets name, conversation and place for Penny
@@ -235,10 +239,10 @@ while dead == False:                                #While loop to run the main 
                             time.sleep(2)
                             type("BRACE FOR IMPACT!\n")
                             print("")
-                            time.sleep(3)
                             mixer.music.stop()
-                            mixer.music.load("Explosion-Fixed.mp3")
-                            mixer.music.play(5)
+                            mixer.music.load("Explosion-Fixed2.mp3")
+                            mixer.music.play()
+                            time.sleep(3)
                             type("The Infinity crash landed in Lake Geneva... killing all on board...\n")
                             print("")
                             time.sleep(3)
