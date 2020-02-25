@@ -18,7 +18,7 @@ def type(string):
 
 mixer.init()
 mixer.music.load("Duel of the Fates.mp3")     #Music Player
-mixer.music.play()
+mixer.music.play(5)
 
 lift = Room("Lift")
 lift.set_description("You can go up or down!")      #Sets name and description for Lift
