@@ -2,11 +2,12 @@
 
 block_cipher = None
 
-
+added_files = [
+	('/sfx/*.mp3', 'music'
 a = Analysis(['main.py'],
              pathex=['C:\\Users\\spud-\\Documents\\Github\\Text-Adventure'],
              binaries=[],
-             datas=[('sfx/Duel of the Fates.mp3', '.'), ('sfx/Explosion-Fixed2.mp3', '.'), ('sfx/imperial_alert.mp3', '.')],
+             datas=added_files,
              hiddenimports=[],
              hookspath=[],
              runtime_hooks=[],
