@@ -254,7 +254,7 @@ while dead == False:                                #While loop to run the main 
                             time.sleep(3)
                             type("War has begun...\n")
                             print("")
-                            time.sleep(3.5)
+                            time.sleep(2)
                             type2("Prepare...\n")
                             print("")
                             time.sleep(1)
