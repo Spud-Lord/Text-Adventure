@@ -39,6 +39,7 @@ class Enemy(Character):                                 #Defines the Enemy Class
       print("You fend " + self.name + " off with the " + combat_item)
       Enemy.enemies_defeated += 1                       #Adds 1 to the Enemies Defeated variable
       return True
+
     else:                                               #If the user loses the fight, the indented code runs
       print(self.name + " has defeated you! Hopefully a new Captain can win the battle and the war...")
       return False
