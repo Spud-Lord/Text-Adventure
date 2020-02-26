@@ -9,8 +9,8 @@ class Character():                                      #Defines the Character C
         return self.name
 
     def describe(self):                                 #Defines how the program will tell the user who is in the room and how to give the description of the Character
-        print( self.name + " is here!" )
-        print( self.description )
+        print(self.name + " is here!")
+        print(self.description)
 
     def set_conversation(self, conversation):           #Gives the conversation a variable name and tells the program how to set the pre-keyed in conversation speech
         self.conversation = conversation
