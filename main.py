@@ -23,7 +23,7 @@ def type2(string):
     time.sleep(0.75)
 
 mixer.init()                                    #Initializes Music Player
-mixer.music.load("Duel of the Fates.mp3")       #Loads the Music
+mixer.music.load("Duel.of.the.Fates.mp3")       #Loads the Music
 mixer.music.play(5)                             #Plays Music 5 times
 
 lift = Room("Lift")
