@@ -4,7 +4,6 @@ from room import Room
 from character import Character, Enemy
 from item import Item
 import time                         #Imports requried Programs and Modules
-import typing
 import os
 import sys
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide"       #Hides the "Welcome to Pygame" Message
