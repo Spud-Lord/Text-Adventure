@@ -183,20 +183,20 @@ time.sleep(2)
 
 while dead == False:                                #While loop to run the main game until the user is dead - Which happens if they win or lose...
 
-    print("")
+    print("")                                       #Prints blank line for a better UI
 
     current_room.get_details()                      #Gets the details of the current room the user is up to
 
-    print("")
+    print("")                                       #Prints blank line for a better UI
 
     inhabitant = current_room.get_character()       #Gets the characters in the current room the user is in and assigns it to a variable for easy working
     if inhabitant is not None:                      #If there is an inhabitant, the indented code will run
-        for person in inhabitant:
+        for person in inhabitant:                   #For Loop that scans list for the right character in the room
             person.describe()                       #Describes the person in the room
 
     items = current_room.get_item()                 #Gets the current items in the room and assigns them to a variable for easy working
     if items is not None:                           #If there is an item, the indented code will run
-        for item in items:
+        for item in items:                          #For Loop that scans list for the right item in the room
             item.describe()                         #Describes the item
 
     print(" ")
@@ -232,8 +232,8 @@ while dead == False:                                #While loop to run the main 
                         time.sleep(3)
                         current_room.get_character().remove(person)   #Removes the person if they are defeated
                         if person.get_defeated() == 9:      #When all the enemies are defeated, the indented code will run
-                            mixer.music.stop()
                             mixer.music.load("imperial_alert.mp3")
+                            mixer.music.stop()
                             mixer.music.play()
                             print("INCOMING!\n")
                             time.sleep(2)
@@ -246,15 +246,15 @@ while dead == False:                                #While loop to run the main 
                             type("BRACE FOR IMPACT!\n")
                             time.sleep(3)
                             print("")
-                            mixer.music.stop()
                             mixer.music.load("Explosion-Fixed2.mp3")
+                            mixer.music.stop()
                             mixer.music.play()
                             type("The Infinity crash landed in Lake Geneva... killing all on board...\n")
                             print("")
                             time.sleep(3)
                             type("War has begun...\n")
                             print("")
-                            time.sleep(3)
+                            time.sleep(3.5)
                             type2("Prepare...\n")
                             print("")
                             time.sleep(1)
@@ -262,7 +262,7 @@ while dead == False:                                #While loop to run the main 
                             dead = True                    #dead Boolean made True
 
                     else:
-                        mixer.music.fadeout(3000)
+                        mixer.music.fadeout(3000)         #Music fades away for 3 seconds
                         time.sleep(3)
                         dead = True                       #If the user loses the fight, the dead Boolean is made True
 
