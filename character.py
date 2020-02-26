@@ -23,7 +23,6 @@ class Character():                                      #Defines the Character C
 
     def fight(self, combat_item):                       #Defines what will happen if the user tries to fight with a friendly
         print(self.name + " doesn't want to fight with you")
-        return False
 
 class Enemy(Character):                                 #Defines the Enemy Class as a derivitive of the Character Class to be called and used in the main program
 
