@@ -14,14 +14,14 @@ def type(string):
     sys.stdout.write(char)          #Defines what "type" command does
     sys.stdout.flush()
     time.sleep(0.02)
-  sys.stdout.write("\n")
+  sys.stdout.write("\n")            #Writes out a new line at the end of every type
 
 def type2(string):
   for char in string:
     sys.stdout.write(char)          #Defines what "type2" command does
     sys.stdout.flush()
     time.sleep(0.75)
-  sys.stdout.write("\n")
+  sys.stdout.write("\n")            #Writes out a new line at the end of every type2
 
 mixer.init()                                    #Initializes Music Player
 mixer.music.load("Duel.of.the.Fates.mp3")       #Loads the Music
@@ -122,7 +122,7 @@ on_hand = []                        #Empty list containing what the User is able
 
 dead = False                        #Identifies the User as not dead
 
-type("Your mission... should you choose to accept it...\n")       #Type calls upon the type() above and places the characters down one by one                                                       #Prints out a new line for the type function
+type("Your mission... should you choose to accept it...\n")       #Type calls upon the type() above and places the characters down one by one
 time.sleep(2)                                                     #Pauses Program for that many seconds
 type("Fend off the Formula Front from taking Geneva...\n")        #\n moves to a new line
 time.sleep(2)
