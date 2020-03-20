@@ -14,12 +14,14 @@ def type(string):
     sys.stdout.write(char)          #Defines what "type" command does
     sys.stdout.flush()
     time.sleep(0.02)
+  sys.stdout.write("\n")            #Writes out a new line at the end of every type
 
 def type2(string):
   for char in string:
     sys.stdout.write(char)          #Defines what "type2" command does
     sys.stdout.flush()
     time.sleep(0.75)
+  sys.stdout.write("\n")            #Writes out a new line at the end of every type2
 
 mixer.init()                                    #Initializes Music Player
 mixer.music.load("Duel.of.the.Fates.mp3")       #Loads the Music
@@ -121,63 +123,42 @@ on_hand = []                        #Empty list containing what the User is able
 dead = False                        #Identifies the User as not dead
 
 type("Your mission... should you choose to accept it...\n")       #Type calls upon the type() above and places the characters down one by one
-print(" ")                                                        #Prints out a new line for the type function
 time.sleep(2)                                                     #Pauses Program for that many seconds
 type("Fend off the Formula Front from taking Geneva...\n")        #\n moves to a new line
-print(" ")
 time.sleep(2)
 type("Take everything you can")
-print(" ")
 type("Type 'Take' to take items")
-print(" ")
 type("Type 'Talk' to talk to friendlies")
-print(" ")
 type("Type 'Fight' to fight enemies")
-print(" ")
 type("Type where you want to go from the selection exactly as you see it\n")
-print(" ")
 time.sleep(5)
 type("Now... you are The Captain of the brand new Spacecraft... the WSC Infinity...\n")
-print(" ")
 time.sleep(2)
 type("You must command your crew to victory.\n")
-print(" ")
 time.sleep(2)
 type("Defeat all enemies in your path.\n")
-print(" ")
 time.sleep(2)
 type("You lost your sword recently. You may need that. See if you can find it on your mission\n")
-print(" ")
 time.sleep(2)
 type("The WSC Vengeance has recently disabled the enemies shields.\n")
-print(" ")
 time.sleep(2)
 type("Use your gun turrets and fighters to your advantage and outskill the Formula Front Fleet.\n")
-print(" ")
 time.sleep(2)
 type("Be careful though...\n")
-print(" ")
 time.sleep(2)
 type("Our orbital defences are down and the WSC Home Fleet is crumbling...\n")
-print(" ")
 time.sleep(2)
 type("As the most powerful warship ever... you are our last hope...\n")
-print(" ")
 time.sleep(2)
 type("You must lead the charge with the WSC Home Fleet by your side\n")
-print(" ")
 time.sleep(2)
 type("Wait...\n")
-print(" ")
 time.sleep(2)
 type("Command is moving the Home Fleet further out to crush incoming FF Reinforcements...\n")
-print(" ")
 time.sleep(2)
 type("You're on your own now...\n")
-print(" ")
 time.sleep(2)
 type("Let us go forth and defend Geneva!\n")
-print(" ")
 time.sleep(2)
 
 while dead == False:                                #While loop to run the main game until the user is dead - Which happens if they win or lose...
@@ -237,25 +218,19 @@ while dead == False:                                #While loop to run the main 
                             print("INCOMING!\n")
                             time.sleep(2)
                             type("The Infinity has taken critical damage!\n")
-                            print("")
                             time.sleep(1)
                             type("The ship is going down!\n")
-                            print("")
                             time.sleep(2)
                             type("BRACE FOR IMPACT!\n")
                             time.sleep(3)
-                            print("")
                             mixer.music.load("Explosion-Fixed2.mp3")
                             mixer.music.stop()
                             mixer.music.play()
                             type("The Infinity crash landed in Lake Geneva... killing all on board...\n")
-                            print("")
                             time.sleep(3)
                             type("War has begun...\n")
-                            print("")
                             time.sleep(2)
                             type2("Prepare...\n")
-                            print("")
                             time.sleep(1)
                             type("Coming 2020...")
                             dead = True                    #dead Boolean made True
