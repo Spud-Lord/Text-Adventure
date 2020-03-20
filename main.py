@@ -276,7 +276,7 @@ while dead == False:                                #While loop to run the main 
     elif command == "Take":                               #If the user wants to take an item, the indented code is run
         if item is not None:
             print("You take the " +  item.get_name() + " along with you\n")
-            on_hand.append(item.get_name())               #Adds the iitem to the on_hand list so that the user can use it in fights
+            on_hand.append(item.get_name())               #Adds the item to the on_hand list so that the user can use it in fights
             current_room.get_item().remove(item)          #Removes the item from the room
 
         else:
