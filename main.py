@@ -122,6 +122,8 @@ on_hand = []                        #Empty list containing what the User is able
 
 dead = False                        #Identifies the User as not dead
 
+type("Read the epic story as it is published at https://www.wattpad.com/story/245646734-the-formula-front-war-part-of-the-world-space")
+time.sleep(2)
 type("Your mission... should you choose to accept it...\n")       #Type calls upon the type() above and places the characters down one by one
 time.sleep(2)                                                     #Pauses Program for that many seconds
 type("Fend off the Formula Front from taking Geneva...\n")        #\n moves to a new line
